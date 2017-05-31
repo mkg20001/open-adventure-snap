@@ -1,0 +1,24 @@
+name: open-adventure
+version: 2.5git
+summary: forward-port of the Crowther/Woods Adventure 2.5 from 1995
+description: |
+  This code is a forward-port of the Crowther/Woods Adventure 2.5 from 1995,
+  last version in the main line of Colossal Cave Adventure development written by the original authors.
+  Source: https://gitlab.com/esr/open-adventure
+
+grade: stable
+confinement: strict
+
+apps:
+  open-adventure:
+    command: advent
+
+parts:
+  advent:
+    plugin: make
+    build: make
+    install: install -D advent $SNAPCRAFT_PART_INSTALL/usr/bin/advent
+    source: https://gitlab.com/esr/open-adventure.git
+    build-packages:
+      - gcc
+      - libc6-dev
